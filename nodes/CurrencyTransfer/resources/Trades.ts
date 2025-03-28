@@ -30,7 +30,55 @@ export const TradeOperations: INodeProperties[] = [
           },
         },
       },
+      {
+        name: 'Create',
+        value: 'create',
+        action: 'Create trade',
+        description: 'Book trades based on a quotation',
+        routing: {
+          request: {
+            method: 'POST',
+            url: 'trades',
+            body: {
+              broker_quotation_uuid: '={{ $parameter.brokerQuotationUuid }}',
+              agree_to_terms: true
+            }
+          },
+        },
+      },
+      {
+        name: 'Show',
+        value: 'show',
+        action: 'Show trade',
+        description: 'Show information for trade booking',
+        routing: {
+          request: {
+            method: 'GET',
+            url: '=trades/{{$parameter.uuid}}',
+          },
+        },
+      },
     ],
     default: 'list'
   }
 ]
+
+export const TradeFields: INodeProperties[] = [
+  {
+    displayName: 'Broker Quotation UUID',
+    description: 'UUID of broker quotation generated during quotation',
+    name: 'brokerQuotationUuid',
+    type: 'string',
+    default: '',
+    displayOptions: {
+      show: {
+        resource: [
+          'trade'
+        ],
+        operation: [
+          'create'
+        ]
+      }
+    }
+  },
+];

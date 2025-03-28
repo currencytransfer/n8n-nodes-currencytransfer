@@ -18,7 +18,7 @@ export const AccountsOperations: INodeProperties[] = [
         name: 'List',
         value: 'list',
         action: 'List accounts',
-        description: 'Pull information for all account of the current client something else',
+        description: 'Pull information for all account of the current client',
         routing: {
           request: {
             method: 'GET',

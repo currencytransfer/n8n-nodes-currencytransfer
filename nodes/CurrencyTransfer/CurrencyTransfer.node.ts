@@ -3,7 +3,7 @@ import { MetaFields } from './fields/MetaFields';
 import { GenericFields } from './fields/GenericFields';
 import { AccountsOperations } from './resources/Accounts';
 import { QuoteOperations, QuoteFields } from './resources/Quotes';
-import { TradeOperations } from './resources/Trades';
+import { TradeOperations, TradeFields } from './resources/Trades';
 
 export class CurrencyTransfer implements INodeType {
   description: INodeTypeDescription = {
@@ -55,12 +55,13 @@ export class CurrencyTransfer implements INodeType {
         default: 'account'
       },
 
-      ...MetaFields,
-      ...GenericFields,
       ...AccountsOperations,
       ...QuoteOperations,
       ...QuoteFields,
       ...TradeOperations,
+      ...TradeFields,
+      ...MetaFields,
+      ...GenericFields,
     ]
   };
 }
