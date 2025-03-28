@@ -1,6 +1,9 @@
 import { INodeType, INodeTypeDescription  } from 'n8n-workflow';
-import { AccountsFields, AccountsOperations } from './resources/Accounts';
+import { MetaFields } from './fields/MetaFields';
+import { GenericFields } from './fields/GenericFields';
+import { AccountsOperations } from './resources/Accounts';
 import { QuoteOperations, QuoteFields } from './resources/Quotes';
+import { TradeOperations } from './resources/Trades';
 
 export class CurrencyTransfer implements INodeType {
   description: INodeTypeDescription = {
@@ -43,15 +46,21 @@ export class CurrencyTransfer implements INodeType {
           {
             name: 'Quote',
             value: 'quote'
+          },
+          {
+            name: 'Trade',
+            value: 'trade'
           }
         ],
         default: 'account'
       },
 
+      ...MetaFields,
+      ...GenericFields,
       ...AccountsOperations,
-      ...AccountsFields,
       ...QuoteOperations,
-      ...QuoteFields
+      ...QuoteFields,
+      ...TradeOperations,
     ]
   };
 }

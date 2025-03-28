@@ -16,7 +16,7 @@ export const AccountsOperations: INodeProperties[] = [
     options: [
       {
         name: 'List',
-        value: 'list_accounts',
+        value: 'list',
         action: 'List accounts',
         description: 'Pull information for all account of the current client something else',
         routing: {
@@ -34,32 +34,11 @@ export const AccountsOperations: INodeProperties[] = [
         routing: {
           request: {
             method: 'GET',
-            url: '=accounts/{{$parameter.accountUUID}}/broker_accounts'
+            url: '=accounts/{{$parameter.uuid}}/broker_accounts'
           }
         },
       }
     ],
-    default: 'list_accounts'
-  }
-]
-
-export const AccountsFields: INodeProperties[] = [
-  {
-    displayName: 'Accoount UUID',
-    description: 'Input Account UUID',
-    required: true,
-    name: 'accountUUID',
-    type: 'string',
-    default: '',
-    displayOptions: {
-      show: {
-        resource: [
-          'account'
-        ],
-        operation: [
-          'list_account_broker_accounts'
-        ]
-      }
-    }
+    default: 'list'
   }
 ]
