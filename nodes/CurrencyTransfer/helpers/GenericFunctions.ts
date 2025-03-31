@@ -11,7 +11,7 @@ export async function removeEmptyBodyParameters(
 
   if(typeof body === 'object' && Object.getOwnPropertyNames(body).length != 0) {
     Object.keys(body).forEach(key => {
-      if(body[key] === '') {
+      if(isEmptyParam(body[key])) {
         delete body[key];
       }
     })
@@ -21,3 +21,13 @@ export async function removeEmptyBodyParameters(
 
   return requestOptions;
 };
+
+const isEmptyParam = (param: any) => {
+  if(param === null) { return true }
+
+  if(typeof param === 'object') {
+    Object.keys(param).length === 0
+  } else {
+    return param === '' || param == 0.0
+  }
+}

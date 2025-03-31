@@ -11,10 +11,10 @@ export const GenericFields: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: [
-          'account', 'trade', 'beneficiary'
+          'account', 'trade', 'beneficiary', 'payment'
         ],
         operation: [
-          'list_account_broker_accounts', 'show', 'update'
+          'list_account_broker_accounts', 'show', 'update', 'delete'
         ]
       }
     }

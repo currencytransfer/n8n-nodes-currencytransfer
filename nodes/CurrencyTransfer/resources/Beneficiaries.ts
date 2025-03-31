@@ -188,7 +188,7 @@ const beneficiaryProperties = [
 ];
 const stringFields = beneficiaryProperties.map(buildBeneficiaryField);
 
-const createAndUpdateBodyParams = {
+const createOrUpdateParams = {
   nickname: '={{$parameter.nickname}}',
   type: '={{$parameter.beneficiaryType}}',
   first_name: '={{$parameter.firstName}}',
@@ -262,7 +262,7 @@ export const BeneficiaryOperations: INodeProperties[] = [
           request: {
             method: 'POST',
             url: 'beneficiaries',
-            body: createAndUpdateBodyParams
+            body: createOrUpdateParams
           },
         },
       },
@@ -287,7 +287,7 @@ export const BeneficiaryOperations: INodeProperties[] = [
           request: {
             method: 'PUT',
             url: '=beneficiaries/{{$parameter.uuid}}',
-            body: createAndUpdateBodyParams
+            body: createOrUpdateParams
           },
         },
       },
