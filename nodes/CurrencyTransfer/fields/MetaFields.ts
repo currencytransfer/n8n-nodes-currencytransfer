@@ -1,7 +1,7 @@
 import { INodeProperties } from 'n8n-workflow';
 
 const resource = [
-  'trade'
+  'trade', 'beneficiary'
 ];
 
 const operation = [

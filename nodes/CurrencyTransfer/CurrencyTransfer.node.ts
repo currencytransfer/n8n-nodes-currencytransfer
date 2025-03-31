@@ -4,10 +4,11 @@ import { GenericFields } from './fields/GenericFields';
 import { AccountsOperations } from './resources/Accounts';
 import { QuoteOperations, QuoteFields } from './resources/Quotes';
 import { TradeOperations, TradeFields } from './resources/Trades';
+import { BeneficiaryOperations, BeneficiaryFields } from './resources/Beneficiaries';
 
 export class CurrencyTransfer implements INodeType {
   description: INodeTypeDescription = {
-    displayName: 'Currency Transfer',
+    displayName: 'Currencytransfer',
     name: 'currencyTransfer',
     icon: 'file:ct-icon.svg',
     description: 'Easy and simple currency conversion',
@@ -29,7 +30,8 @@ export class CurrencyTransfer implements INodeType {
       baseURL: '={{ $credentials.baseUrl }}/api/v1/',
       headers: {
         Accept: 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'CT-n8n/1.0'
       }
     },
     properties: [
@@ -50,18 +52,26 @@ export class CurrencyTransfer implements INodeType {
           {
             name: 'Trade',
             value: 'trade'
+          },
+          {
+            name: 'Beneficiary',
+            value: 'beneficiary'
           }
         ],
-        default: 'account'
+        default: 'quote'
       },
 
+      // Operations
       ...AccountsOperations,
       ...QuoteOperations,
-      ...QuoteFields,
+      ...BeneficiaryOperations,
       ...TradeOperations,
-      ...TradeFields,
-      ...MetaFields,
+      // Fields
       ...GenericFields,
+      ...MetaFields,
+      ...QuoteFields,
+      ...TradeFields,
+      ...BeneficiaryFields,
     ]
   };
 }
