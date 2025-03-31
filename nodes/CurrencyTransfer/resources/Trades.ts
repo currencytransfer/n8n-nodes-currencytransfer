@@ -1,4 +1,5 @@
 import { INodeProperties } from 'n8n-workflow';
+import { customeQueryParams } from '../helpers/GenericFunctions'
 
 export const TradeOperations: INodeProperties[] = [
   {
@@ -6,6 +7,11 @@ export const TradeOperations: INodeProperties[] = [
     name: 'operation',
     type: 'options',
     noDataExpression: true,
+    routing: {
+      send: {
+        preSend: [customeQueryParams]
+      }
+    },
     displayOptions: {
       show: {
         resource: [
@@ -25,7 +31,11 @@ export const TradeOperations: INodeProperties[] = [
             url: 'trades',
             qs: {
               page: '={{$parameter.pageNumber}}',
-              per_page: '={{$parameter.perPage}}'
+              per_page: '={{$parameter.perPage}}',
+              q: {
+                sell_currency_in: '={{$parameter.sellCurrenciesFilter}}',
+                buy_currency_in: '={{$parameter.buyCurrenciesFilter}}'
+              }
             },
           },
         },
@@ -77,6 +87,46 @@ export const TradeFields: INodeProperties[] = [
         ],
         operation: [
           'create'
+        ]
+      }
+    }
+  },
+  {
+    displayName: 'Sell Currencies',
+    description: 'Filter by sell currencies',
+    name: 'sellCurrenciesFilter',
+    type: 'multiOptions',
+    typeOptions: {
+      loadOptionsMethod: 'getCurrencies',
+    },
+    default: [],
+    displayOptions: {
+      show: {
+        resource: [
+          'trade'
+        ],
+        operation: [
+          'list'
+        ]
+      }
+    }
+  },
+  {
+    displayName: 'Buy Currencies',
+    description: 'Filter by buy currencies',
+    name: 'buyCurrenciesFilter',
+    type: 'multiOptions',
+    typeOptions: {
+      loadOptionsMethod: 'getCurrencies',
+    },
+    default: [],
+    displayOptions: {
+      show: {
+        resource: [
+          'trade'
+        ],
+        operation: [
+          'list'
         ]
       }
     }

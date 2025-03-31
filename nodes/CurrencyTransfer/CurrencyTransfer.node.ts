@@ -1,4 +1,4 @@
-import { INodeType, INodeTypeDescription  } from 'n8n-workflow';
+import { INodeType, INodeTypeDescription, ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { MetaFields } from './fields/MetaFields';
 import { GenericFields } from './fields/GenericFields';
 import { AccountsOperations } from './resources/Accounts';
@@ -7,6 +7,8 @@ import { TradeOperations, TradeFields } from './resources/Trades';
 import { BeneficiaryOperations, BeneficiaryFields } from './resources/Beneficiaries';
 import { PaymentOperations, PaymentFields } from './resources/Payments';
 import { BalanceOperations, BalanceFields } from './resources/Balances';
+
+import { getCurrencies } from './helpers/GetCurrenciesResource'
 
 export class CurrencyTransfer implements INodeType {
   description: INodeTypeDescription = {
@@ -34,7 +36,7 @@ export class CurrencyTransfer implements INodeType {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         'User-Agent': 'CT-n8n/1.0'
-      }
+      },
     },
     properties: [
       {
@@ -87,5 +89,11 @@ export class CurrencyTransfer implements INodeType {
       ...BeneficiaryFields,
       ...PaymentFields
     ]
+  };
+
+  methods = {
+    loadOptions: {
+      getCurrencies
+    },
   };
 }

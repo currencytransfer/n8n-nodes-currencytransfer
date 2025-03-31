@@ -75,7 +75,10 @@ export const QuoteFields: INodeProperties[] = [
     description: 'Sell currency for quote',
     required: true,
     name: 'quoteSellCurrency',
-    type: 'string',
+    type: 'options',
+    typeOptions: {
+      loadOptionsMethod: 'getCurrencies',
+    },
     default: '',
     displayOptions: {
       show: {
@@ -93,7 +96,10 @@ export const QuoteFields: INodeProperties[] = [
     description: 'Buy currency for quote',
     required: true,
     name: 'quoteBuyCurrency',
-    type: 'string',
+    type: 'options',
+    typeOptions: {
+      loadOptionsMethod: 'getCurrencies',
+    },
     default: '',
     displayOptions: {
       show: {
