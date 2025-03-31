@@ -6,6 +6,7 @@ import { QuoteOperations, QuoteFields } from './resources/Quotes';
 import { TradeOperations, TradeFields } from './resources/Trades';
 import { BeneficiaryOperations, BeneficiaryFields } from './resources/Beneficiaries';
 import { PaymentOperations, PaymentFields } from './resources/Payments';
+import { BalanceOperations, BalanceFields } from './resources/Balances';
 
 export class CurrencyTransfer implements INodeType {
   description: INodeTypeDescription = {
@@ -47,6 +48,10 @@ export class CurrencyTransfer implements INodeType {
             value: 'account'
           },
           {
+            name: 'Balance',
+            value: 'balance'
+          },
+          {
             name: 'Quote',
             value: 'quote'
           },
@@ -68,6 +73,7 @@ export class CurrencyTransfer implements INodeType {
 
       // Operations
       ...AccountsOperations,
+      ...BalanceOperations,
       ...QuoteOperations,
       ...BeneficiaryOperations,
       ...TradeOperations,
@@ -75,6 +81,7 @@ export class CurrencyTransfer implements INodeType {
       // Fields
       ...GenericFields,
       ...MetaFields,
+      ...BalanceFields,
       ...QuoteFields,
       ...TradeFields,
       ...BeneficiaryFields,
