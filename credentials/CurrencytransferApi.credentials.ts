@@ -1,7 +1,8 @@
 import {
   IAuthenticateGeneric,
   ICredentialType,
-  INodeProperties
+  INodeProperties,
+  ICredentialTestRequest
 } from 'n8n-workflow';
 
 export class CurrencytransferApi implements ICredentialType {
@@ -56,4 +57,11 @@ export class CurrencytransferApi implements ICredentialType {
       }
     }
   };
+
+  test: ICredentialTestRequest = {
+    request: {
+      baseURL: '={{$credentials.baseUrl}}',
+      url: '/api/v1/user'
+    }
+  }
 }
