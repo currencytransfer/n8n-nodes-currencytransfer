@@ -1,4 +1,4 @@
-import { INodeType, INodeTypeDescription, ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
+import { INodeType, INodeTypeDescription } from 'n8n-workflow';
 import { MetaFields } from './fields/MetaFields';
 import { GenericFields } from './fields/GenericFields';
 import { AccountsOperations } from './resources/Accounts';

@@ -1,4 +1,4 @@
-import { INodeProperties, IDataObject } from 'n8n-workflow';
+import { INodeProperties } from 'n8n-workflow';
 
 export const BalanceOperations: INodeProperties[] = [
   {
