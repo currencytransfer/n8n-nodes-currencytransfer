@@ -3,7 +3,8 @@ import {
 } from 'n8n-workflow';
 
 import {
-  removeEmptyBodyParameters
+  removeEmptyBodyParameters,
+  customeQueryParams
 } from '../helpers/GenericFunctions';
 
 const buildBeneficiaryField = (properties: any) => {
@@ -233,7 +234,7 @@ export const BeneficiaryOperations: INodeProperties[] = [
     },
     routing: {
       send: {
-        preSend: [removeEmptyBodyParameters]
+        preSend: [removeEmptyBodyParameters, customeQueryParams]
       }
     },
     options: [
@@ -248,7 +249,10 @@ export const BeneficiaryOperations: INodeProperties[] = [
             url: 'beneficiaries',
             qs: {
               page: '={{$parameter.pageNumber}}',
-              per_page: '={{$parameter.perPage}}'
+              per_page: '={{$parameter.perPage}}',
+              q: {
+                currency_in: '={{$parameter.currenciesFilter}}',
+              }
             },
           },
         },
@@ -297,6 +301,26 @@ export const BeneficiaryOperations: INodeProperties[] = [
 ];
 
 export const BeneficiaryFields: INodeProperties[] = [
+  {
+    displayName: 'Currency Filter',
+    description: 'Filter by currency',
+    name: 'currenciesFilter',
+    type: 'multiOptions',
+    typeOptions: {
+      loadOptionsMethod: 'getCurrencies',
+    },
+    default: [],
+    displayOptions: {
+      show: {
+        resource: [
+          'beneficiary'
+        ],
+        operation: [
+          'create', 'list'
+        ]
+      }
+    }
+  },
   {
     displayName: 'Type',
     description: 'Beficiaries can be either a Company or an Individual',
