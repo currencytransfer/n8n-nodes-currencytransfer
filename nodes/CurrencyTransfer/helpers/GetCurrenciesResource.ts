@@ -13,11 +13,11 @@ const currencyCache: CurrencyCache = {
 };
 
 async function fetchFromApi(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-  const credentials = await this.getCredentials('CurrencyTransferBasic');
+  const credentials = await this.getCredentials('currencytransferApi');
   const baseUrl = credentials.baseUrl;
   const response = await this.helpers.httpRequestWithAuthentication.call(
     this,
-    'CurrencyTransferBasic',
+    'currencytransferApi',
     {
       method: 'GET',
       url: `${baseUrl}/api/v1/currencies/supported`,

@@ -12,8 +12,8 @@ const buildBeneficiaryField = (properties: any) => {
     name: properties.name,
     displayName: properties.displayName,
     description: properties.description,
-    default: properties.defaultValue,
     type: 'string',
+    default: properties.defaultValue,
     displayOptions: {
       show: {
         resource: [

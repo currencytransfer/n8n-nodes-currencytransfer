@@ -4,8 +4,8 @@ import {
   INodeProperties
 } from 'n8n-workflow';
 
-export class CurrencyTransferBasic implements ICredentialType {
-  name = 'CurrencyTransferBasic';
+export class CurrencytransferApi implements ICredentialType {
+  name = 'currencytransferApi';
   displayName = 'Currencytransfer API';
   documentationUrl = 'https://stage.currencytransfer.com/api/v1/documentation.html';
 
@@ -32,7 +32,7 @@ export class CurrencyTransferBasic implements ICredentialType {
       default: 'https://stage.currencytransfer.com',
       options: [
         {
-          name: 'Beta',
+          name: 'Staging',
           value: 'https://stage.currencytransfer.com'
         },
         {

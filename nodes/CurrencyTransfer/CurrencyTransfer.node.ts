@@ -26,7 +26,7 @@ export class CurrencyTransfer implements INodeType {
     outputs: ['main'],
     credentials: [
       {
-        name: 'CurrencyTransferBasic',
+        name: 'currencytransferApi',
         required: true
       }
     ],
@@ -54,20 +54,20 @@ export class CurrencyTransfer implements INodeType {
             value: 'balance'
           },
           {
-            name: 'Quote',
-            value: 'quote'
-          },
-          {
-            name: 'Trade',
-            value: 'trade'
-          },
-          {
             name: 'Beneficiary',
             value: 'beneficiary'
           },
           {
             name: 'Payment',
             value: 'payment'
+          },
+          {
+            name: 'Quote',
+            value: 'quote'
+          },
+          {
+            name: 'Trade',
+            value: 'trade'
           },
         ],
         default: 'quote'
