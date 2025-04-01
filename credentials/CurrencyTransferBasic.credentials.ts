@@ -6,8 +6,8 @@ import {
 
 export class CurrencyTransferBasic implements ICredentialType {
   name = 'CurrencyTransferBasic';
-  displayName = 'Currency Transfer Basic Authentication';
-  documentationUrl = 'https://beta.currencytransfer.com/api/v1/documentation.html';
+  displayName = 'Currencytransfer API';
+  documentationUrl = 'https://stage.currencytransfer.com/api/v1/documentation.html';
 
   properties: INodeProperties[] = [
     {
@@ -29,11 +29,11 @@ export class CurrencyTransferBasic implements ICredentialType {
       displayName: 'Environment',
       name: 'baseUrl',
       type: 'options',
-      default: 'https://beta.currencytransfer.com',
+      default: 'https://stage.currencytransfer.com',
       options: [
         {
           name: 'Beta',
-          value: 'https://beta.currencytransfer.com'
+          value: 'https://stage.currencytransfer.com'
         },
         {
           name: 'Production',

@@ -1,46 +1,81 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# n8n-nodes-currencytransfer
 
-# n8n-nodes-starter
+This is an n8n community node. It lets you use [Currencytransfer](https://www.currencytransfer.com/) in your n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+Currencytransfer allows you to make payments in foreign currencies fast and
+with competitive rates.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
 
-## Prerequisites
+[Installation](#installation)
+[Operations](#operations)
+[Credentials](#credentials)
+[Compatibility](#compatibility)
+[Resources](#resources)
 
-You need the following installed on your development machine:
+## Installation
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-## Using this starter
+## Operations
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+This n8n integration adds all actions needed to make a foreign payment via
+Currencytransfer's API's.
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
 
-## More information
+Following operations are available via the node:
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+* [Quotation](https://stage.currencytransfer.com/api/v1/documentation.html#/Quotes);
+* [Trade management](https://stage.currencytransfer.com/api/v1/documentation.html#/Trades);
+* [Beneficiary management](https://stage.currencytransfer.com/api/v1/documentation.html#/Beneficiaries)
+* [Payments management](https://stage.currencytransfer.com/api/v1/documentation.html#/Payments)
 
-## License
+This is enough to cover the process of getting a price for our conversion,
+booking a deal with us, creating a recipient(or multiple) and issue a payment.
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+Not all features of our API are available via the operations defined here, but
+you can always make custom calls n8n's [custom](https://docs.n8n.io/integrations/custom-operations/) operations node.
+
+For more details on all API features refer to our
+[documentation](https://stage.currencytransfer.com/api/v1/documentation.html).
+
+## Credentials
+
+To use this node, you will need to first make a registration on our
+[platform](https://app.currencytransfer.com/sign-up) and go through our
+onboarding process.
+
+Don't worry, it's easy to do and you can always anything from our support great
+staff.
+
+After sign-up and ideally the onboarding process, you will need to generate an
+API Key pair, in order to authenticate with us:
+
+* Go to `Account settings`(your name in the upper right corner of the screen)
+* `Manage Accounts`;
+* Select your account;
+* `Manage API Key`;
+* Click on `Generate Key`;
+
+This will provide you with an `ACCOUNT ID` and `API KEY`;
+
+Then in `n8n` when creating credentials select `Currencytransfer API Account`
+and add your `ACCOUNT ID` and `API KEY` here.
+
+You can also test our production using the staging environment at
+`https://stage.currencytransfer.com`.
+
+Account creation and API generation are the same, just select `Staging`, as an
+environment, when setting up your credentials in n8n.
+
+* Note: To be onboarded on staging please contact our support at `support@currencytransfer.com `.
+
+## Compatibility
+
+The project was tested with `node` version `v20.15.1`
+
+## Resources
+
+* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+* [CurrencytransferAPI](https://stage.currencytransfer.com/api/v1/documentation.html)
+
