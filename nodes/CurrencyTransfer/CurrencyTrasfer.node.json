@@ -1,21 +1,21 @@
 {
-	"node": "n8n-nodes-base.CurrencyTransfer",
-	"nodeVersion": "0.1",
-	"codexVersion": "0.1",
-	"categories": [
-		"Finance & Accounting"
-	],
-	"resources": {
-		"credentialDocumentation": [
-			{
-				"url": "https://beta.currencytransfer.com/api/v1/documentation.html#/"
-			}
-		],
-		"primaryDocumentation": [
-			{
-				"url": "https://beta.currencytransfer.com/api/v1/documentation.html"
-			}
-		]
-	}
+  "node": "n8n-nodes-base.CurrencyTransfer",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": [
+    "Finance & Accounting"
+  ],
+  "resources": {
+    "credentialDocumentation": [
+      {
+        "url": "https://stage.currencytransfer.com/api/v1/documentation.html#/"
+      }
+    ],
+    "primaryDocumentation": [
+      {
+        "url": "https://stage.currencytransfer.com/api/v1/documentation.html"
+      }
+    ]
+  }
 }
 
