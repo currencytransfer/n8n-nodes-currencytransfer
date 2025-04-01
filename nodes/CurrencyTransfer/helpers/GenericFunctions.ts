@@ -9,7 +9,7 @@ const isEmptyParam = (param: any) => {
   if(param === null) { return true }
 
   if(typeof param === 'object') {
-    Object.keys(param).length === 0
+    return Object.keys(param).length === 0
   } else {
     return param === '' || param == 0.0
   }
