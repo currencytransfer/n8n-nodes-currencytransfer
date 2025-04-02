@@ -12,7 +12,7 @@ nvm install v20.15.1
 Install `pnpm`:
 
 ```
-nvm install -g pnpm
+npm install -g pnpm
 ```
 
 #### Install n8n from source
@@ -29,7 +29,7 @@ pnpm start
 This will start up `n8n` from source.
 
 
-##### Create the your custom node
+##### Create your custom node
 
 Follow the instruction on the official [site](https://docs.n8n.io/integrations/creating-nodes/build/declarative-style-node/).
 
@@ -40,7 +40,7 @@ Go to your `n8n` installation directory
 From there go to:
 
 ```
-cd /packages/nodes-base/nodes
+cd ./packages/nodes-base/nodes
 ```
 
 Symlink your nodes from the custom node to this directory
@@ -52,7 +52,7 @@ ln -s /path/to/customenode/nodes/Nodename NodeName
 We also need to symlink any credentials files defined in the project
 
 ```
-cd n8n/packages/nodes-base/credentials
+cd ./packages/nodes-base/credentials
 
 ln -s /path/to/customenode/credentials/credentials.file.ts
 ```
@@ -87,7 +87,7 @@ And lastly in order to register the custom nodes in `n8n` update `packages/nodes
 #### Build and run dev hot reload for all nodes
 
 ```
-cd /packages/nodes-base
+cd ./packages/nodes-base
 pnpm build
 pnpm run dev
 ```
