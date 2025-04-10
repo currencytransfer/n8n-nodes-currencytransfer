@@ -1,19 +1,15 @@
 {
-  "name": "n8n-nodes-currencytransfer",
-  "version": "1.0",
+  "name": "@currencytransfer/n8n-nodes-currencytransfer",
   "description": "N8N node for communication with Currencytransfer's API",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
   "homepage": "https://www.currencytransfer.com/",
-  "author": {
-    "name": "Toma Popov",
-    "email": "toma.popov@currencytransfer.com"
-  },
+  "author": "Toma Popov <toma.popov@currencytransfer.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/currencytransfer/n8n-nodes-currencytransfer"
+    "url": "git+https://github.com/currencytransfer/n8n-nodes-currencytransfer.git"
   },
   "packageManager": "pnpm@9.1.4",
   "main": "index.js",
@@ -48,5 +44,9 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "version": "1.0.0",
+  "bugs": {
+    "url": "https://github.com/currencytransfer/n8n-nodes-currencytransfer/issues"
   }
 }
